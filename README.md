@@ -19,15 +19,12 @@ Or install it yourself as:
 
 ## Authentication
 # With username & password:
-client = Tickets.new("https://yourfreshservicedomain.freshservice.com") # enter you domain while creating the object
-client.username = AGENT_EMAIL # enter your agent email id here
-client.password = AGENT_PASSWORD # enter your password here
+* [Authentication via Username Password](https://gist.github.com/rishabh91/c69c479d4784e86f32569d720e9501cd)
 
 # With ApiKey:
 Every agent in freshservice has an api key associated to them use it to authenticate you API calls.
 
-client = Tickets.new("https://yourfreshservicedomain.freshservice.com")
-client.apikey = APIKEY # enter the apikey here
+* [Authentication via Apikey] (https://gist.github.com/rishabh91/7f80b3fcb7ff34d6d9296459ac1fe82c)
 
 # Content-Type in headers:
 If Content-Type is not provided by Default it sets it to 'application/json', however it can be changed as per your requirement. For instance
