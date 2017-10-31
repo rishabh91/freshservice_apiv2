@@ -1,7 +1,7 @@
 require 'rest-client'
 require 'json'
 
-class FreshserviceApi
+class FreshserviceApiv2
   attr_accessor :header,:username,:password,:apikey,:baseurl
 
 

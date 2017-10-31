@@ -1,5 +1,5 @@
 
-class Tickets < FreshserviceApi
+class Tickets < FreshserviceApiv2
 
   TICKET_ENDPOINT = "/api/v2/tickets"
   TICKET_FIELDS = "/api/v2/ticket_fields"
