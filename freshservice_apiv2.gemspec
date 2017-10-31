@@ -9,4 +9,5 @@ Gem::Specification.new do |s|
   s.files       = ["lib/freshservice_apiv2.rb"]
   s.homepage    = 'https://github.com/rishabh91/freshservice_apiv2'
   s.license       = 'MIT'
+  s.add_runtime_dependency 'rest-client', '~> 2.0.2', '>= 2.0.2'
 end

@@ -40,7 +40,6 @@ class FreshServiceApiv2
   def update(uri,data)
     begin
       pick_header
-      raise StandardError, "An ID is required to delete" if args.size.eql? 0
       request = RestClient::Resource.new(baseurl+uri)
       response = request.put(data,@header)
       return response.code,JSON.parse(response)
@@ -117,4 +116,17 @@ class Tickets < FreshServiceApiv2
   def add_reply(id,data)
     response = post(TICKET_ENDPOINT + "/#{id}/reply", data.to_json)
   end
+
+  def update_conversations(conversation_id,data)
+    response = update(TICKET_CONVERSATIONS + "/#{conversation_id}", data.to_json)
+  end
+
+  def delete_conversation(conversation_id)
+    response = delete(TICKET_CONVERSATIONS + "/#{conversation_id}")
+  end
+
+  def get_all_conversations(ticket_id)
+    response = get(TICKET_ENDPOINT + "/#{ticket_id}/conversations")
+  end
+
 end
