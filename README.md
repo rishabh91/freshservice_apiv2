@@ -17,23 +17,23 @@ Or install it yourself as:
 
     $ gem install freshservice_apiv2
 
-## Authentication
-# With username & password:
+# Authentication
+## With username & password:
 * [Authentication via Username Password](https://gist.github.com/rishabh91/c69c479d4784e86f32569d720e9501cd)
 
-# With ApiKey:
+## With ApiKey:
 Every agent in freshservice has an api key associated to them use it to authenticate you API calls.
 
 * [Authentication via Apikey](https://gist.github.com/rishabh91/7f80b3fcb7ff34d6d9296459ac1fe82c)
 
-# Content-Type in headers:
+## Content-Type in headers:
 If Content-Type is not provided by Default it sets it to 'application/json', however it can be changed as per your requirement. For instance
 For creating tickets with attachments the content-type should be set to 'multipart/form-data'. For doing that create a client object
 as described above then use the object to change the content-type key in your header.
 
 client.header["Content-Type"] = "multipart/form-data"
 
-## Usage
+# Usage
 
 * [Create Ticket](https://gist.github.com/rishabh91/240c06b2606a169af78bf9d9ecb6564b)
 * [View Ticket](https://gist.github.com/rishabh91/421b5bbc2d932bba17ec9b87c487a934)
@@ -44,7 +44,7 @@ client.header["Content-Type"] = "multipart/form-data"
 * [Add Reply to Ticket](https://gist.github.com/rishabh91/4b59b2bbb7307c7a945b9c8011302569)
 * [Get All conversations of a Ticket](https://gist.github.com/rishabh91/7a31bf9046af27fcdab6348222bc61a0)
 
-## Contributing
+# Contributing
 
 1. Fork it
 2. Create your feature branch (`git checkout -b my-new-feature`)
