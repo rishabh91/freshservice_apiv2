@@ -5,12 +5,6 @@ require 'base64'
 class FreshServiceApiv2
   attr_accessor :header,:username,:password,:apikey,:baseurl
 
-
-
-  class AlreadyExistedError < StandardError; end # have to add better error handling #ToDO
-  class ConnectionError < StandardError; end
-
-
   def initialize(uri)
     @baseurl = uri.chomp('/')
   end
@@ -79,54 +73,58 @@ class FreshServiceApiv2
 
 end
 
-class Tickets < FreshServiceApiv2
+module FreshService
 
-  TICKET_ENDPOINT = "/api/v2/tickets"
-  TICKET_FIELDS = "/api/v2/ticket_fields"
-  TICKET_CONVERSATIONS = "/api/v2/conversations"
+  class Tickets < FreshServiceApiv2
 
-  def initialize(uri)
-    super(uri)
-  end
+    TICKET_ENDPOINT = "/api/v2/tickets"
+    TICKET_FIELDS = "/api/v2/ticket_fields"
+    TICKET_CONVERSATIONS = "/api/v2/conversations"
 
-  def create_ticket(data)
-    response = post(TICKET_ENDPOINT,data.to_json)
-  end
+    def initialize(uri)
+      super(uri)
+    end
 
-  def view_ticket(id)
-    response = get(TICKET_ENDPOINT + "/#{id}")
-  end
+    def create_ticket(data)
+      response = post(TICKET_ENDPOINT,data.to_json)
+    end
 
-  def view_all_ticket_fields
-    response = get(TICKET_FIELDS)
-  end
+    def view_ticket(id)
+      response = get(TICKET_ENDPOINT + "/#{id}")
+    end
 
-  def delete_ticket(id)
-    response = delete(TICKET_ENDPOINT + "/#{id}")
-  end
+    def view_all_ticket_fields
+      response = get(TICKET_FIELDS)
+    end
 
-  def update_ticket(id,data)
-    response = update(TICKET_ENDPOINT + "/#{id}", data.to_json)
-  end
+    def delete_ticket(id)
+      response = delete(TICKET_ENDPOINT + "/#{id}")
+    end
 
-  def add_note(id,data)
-    response = post(TICKET_ENDPOINT + "/#{id}/notes", data.to_json)
-  end
+    def update_ticket(id,data)
+      response = update(TICKET_ENDPOINT + "/#{id}", data.to_json)
+    end
 
-  def add_reply(id,data)
-    response = post(TICKET_ENDPOINT + "/#{id}/reply", data.to_json)
-  end
+    def add_note(id,data)
+      response = post(TICKET_ENDPOINT + "/#{id}/notes", data.to_json)
+    end
 
-  def update_conversations(conversation_id,data)
-    response = update(TICKET_CONVERSATIONS + "/#{conversation_id}", data.to_json)
-  end
+    def add_reply(id,data)
+      response = post(TICKET_ENDPOINT + "/#{id}/reply", data.to_json)
+    end
 
-  def delete_conversation(conversation_id)
-    response = delete(TICKET_CONVERSATIONS + "/#{conversation_id}")
-  end
+    def update_conversations(conversation_id,data)
+      response = update(TICKET_CONVERSATIONS + "/#{conversation_id}", data.to_json)
+    end
 
-  def get_all_conversations(ticket_id)
-    response = get(TICKET_ENDPOINT + "/#{ticket_id}/conversations")
+    def delete_conversation(conversation_id)
+      response = delete(TICKET_CONVERSATIONS + "/#{conversation_id}")
+    end
+
+    def get_all_conversations(ticket_id)
+      response = get(TICKET_ENDPOINT + "/#{ticket_id}/conversations")
+    end
+
   end
 
 end
