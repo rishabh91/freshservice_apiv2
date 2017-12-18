@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'freshservice_apiv2'
-  s.version     = '0.1.1'
+  s.version     = '0.2.0'
   s.executables = []
   s.summary     = "A simple way to access freshservice API's"
   s.description = "Wrapper for Freshservice API V2"

@@ -14,7 +14,7 @@ class FreshServiceApiv2
       pick_header
       request = RestClient::Resource.new(baseurl+uri)
       response = request.get(@header)
-      return response.code,JSON.parse(response)
+      return response.code,JSON.parse(response),response
     rescue RestClient::Exception => e
       return e.response.code, JSON.parse(e.response.body)
     end
@@ -25,7 +25,7 @@ class FreshServiceApiv2
       pick_header
       request = RestClient::Resource.new(baseurl+uri)
       response = request.delete(@header)
-      return response.code,JSON.parse(response)
+      return response.code,JSON.parse(response),response
     rescue RestClient::Exception => e
       return e.response.code, JSON.parse(e.response.body)
     end
@@ -36,7 +36,7 @@ class FreshServiceApiv2
       pick_header
       request = RestClient::Resource.new(baseurl+uri)
       response = request.put(data,@header)
-      return response.code,JSON.parse(response)
+      return response.code,JSON.parse(response),response
     rescue RestClient::Exception => e
       return e.response.code, JSON.parse(e.response.body)
     end
@@ -47,7 +47,7 @@ class FreshServiceApiv2
       pick_header
       request = RestClient::Resource.new(baseurl+uri)
       response = request.post(data,@header)
-      return response.code,JSON.parse(response)
+      return response.code,JSON.parse(response),response
     rescue RestClient::Exception => e
       return e.response.code, JSON.parse(e.response.body)
     end
@@ -63,10 +63,10 @@ class FreshServiceApiv2
 
   def authenticate
     if (@username) && (@password) && (@apikey == nil)
-      pass = Base64.encode64("#{@username}:#{@password}").gsub(/\n/,"")
+      pass = Base64.strict_encode64("#{@username}:#{@password}")
       pass
     elsif @apikey
-      encoded = Base64.encode64("#{@apikey}:X")
+      encoded = Base64.strict_encode64("#{@apikey}:X")
       "Basic #{encoded}"
     end
   end
